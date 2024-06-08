@@ -41,3 +41,16 @@ export const updateGastosQuery = async (newGasto) => {
       console.log("Error code: ", error.code, "Error message: ", error.message);
     }
   };
+
+  export const deleteGastosQuery = async (id) => {
+    try {
+      let { gastos } = JSON.parse(fs.readFileSync("./data/gastos.json", "utf-8"));
+      /* gastos.gastos = gastos.gastos.filter((gasto) => gasto.id !== id); */
+  
+      gastos = gastos.filter((gasto) => gasto.id !== id);
+      fs.writeFileSync("./data/gastos.json", JSON.stringify({ gastos }));
+      return gastos;
+    } catch (error) {
+      console.log("Error code: ", error.code, "Error message: ", error.message);
+    }
+  };

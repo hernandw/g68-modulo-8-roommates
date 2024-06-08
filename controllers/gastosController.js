@@ -1,4 +1,4 @@
-import { addGastosQuery, getGastosQuery, updateGastosQuery } from "../models/gastosQueries.js";
+import { addGastosQuery, getGastosQuery, updateGastosQuery, deleteGastosQuery } from "../models/gastosQueries.js";
 import { v4 as uuidv4 } from "uuid";
 
 export const addGasto = async (req, res) => {
@@ -29,6 +29,16 @@ export const updateGasto = async (req, res) => {
     const newGasto = {id, roommate, descripcion, monto };
     const results = await updateGastosQuery(newGasto);
    
+    res.status(200).json(results);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const deleteGasto = async (req, res) => {
+  try {
+    const { id } = req.query;
+    const results = await deleteGastosQuery(id);
     res.status(200).json(results);
   } catch (error) {
     res.status(500).json({ error: error.message });
