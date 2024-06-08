@@ -6,6 +6,7 @@ import {
   recalcularMontoGastos,
 } from "../models/gastosQueries.js";
 import { v4 as uuidv4 } from "uuid";
+import { sendEmail } from "../helpers/sendMail.js";
 
 export const addGasto = async (req, res) => {
   try {
@@ -13,6 +14,7 @@ export const addGasto = async (req, res) => {
     const { roommate, descripcion, monto } = req.body;
     const newGasto = { id, roommate, descripcion, monto };
     const results = await addGastosQuery(newGasto);
+    sendEmail(monto, descripcion, roommate)
     recalcularMontoGastos()
     res.status(201).json(results);
   } catch (error) {
