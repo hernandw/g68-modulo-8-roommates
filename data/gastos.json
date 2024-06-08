@@ -1,10 +1,1 @@
-{
-  "gastos": [
-    {
-      "roommate": "Isaac Kelley",
-      "descripcion": "Articulos de limpieza",
-      "monto": 15000
-    },
-    { "roommate": "Enrique Gamboa", "descripcion": "Internet", "monto": 20000 }
-  ]
-}
+{"gastos":[{"id":"3f462496","roommate":"Luke Washington","descripcion":"Articulos de limpieza","monto":15000}]}
