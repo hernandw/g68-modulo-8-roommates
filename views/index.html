@@ -129,7 +129,7 @@ Articulos de limpieza</textarea>
         $("#roommates").html("");
         $("#roommatesSelect").html("");
         $("#roommatesSelectModal").html("");
-        de mostrar y.forEach((r) => {
+        roommates.forEach((r) => {
           $("#roommatesSelect").append(`
           <option value="${r.nombre}">${r.nombre}</option>
           `);
