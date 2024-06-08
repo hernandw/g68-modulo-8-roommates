@@ -1,5 +1,5 @@
 import path from "path";
-import { addRoommateQuery } from "../models/userQueries.js";  
+import { addRoommateQuery, getRoommatesQuery } from "../models/userQueries.js";  
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';  
 const __dirname = path.resolve();
@@ -25,6 +25,15 @@ export const addRoommate = async (req, res) => {
 
         const results = await addRoommateQuery(newUser);
         res.status(201).json(results);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+export const getRoommates = async (req, res) => {
+    try {
+        const results = await getRoommatesQuery();
+        res.status(200).json(results);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
