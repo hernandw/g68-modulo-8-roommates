@@ -1,0 +1,25 @@
+{
+  "roommates": [
+    {
+      "id": "18366fd1",
+      "nombre": "Isaac Kelley",
+      "email": "isaac.kelley@example.com",
+      "debe": 0,
+      "recibe": 0
+    },
+    {
+      "id": "bc943ed4",
+      "nombre": "Stepan Kiriienko",
+      "email": "stepan.kiriienko@example.com",
+      "debe": 0,
+      "recibe": 0
+    },
+    {
+      "id": "27dde806",
+      "nombre": "Enrique Gamboa",
+      "email": "enrique.gamboa@example.com",
+      "debe": 0,
+      "recibe": 0
+    }
+  ]
+}
