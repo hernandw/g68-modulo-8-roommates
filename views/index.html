@@ -125,11 +125,11 @@ Articulos de limpieza</textarea>
     const imprimir = async () => {
       try {
         await getRoommates();
-        //await getGastos();
+        await getGastos();
         $("#roommates").html("");
         $("#roommatesSelect").html("");
         $("#roommatesSelectModal").html("");
-        roommates.forEach((r) => {
+        de mostrar y.forEach((r) => {
           $("#roommatesSelect").append(`
           <option value="${r.nombre}">${r.nombre}</option>
           `);

@@ -8,9 +8,7 @@ router.post('/roommate', addRoommate)
 
 router.get('/roommates', getRoommates)  
 
-router.get('*', (req, res)=>{
-res.send('404 - page not found')
-})
+
 
 
 export default router
