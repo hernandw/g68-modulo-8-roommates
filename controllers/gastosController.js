@@ -1,4 +1,10 @@
-import { addGastosQuery, getGastosQuery, updateGastosQuery, deleteGastosQuery } from "../models/gastosQueries.js";
+import {
+  addGastosQuery,
+  getGastosQuery,
+  updateGastosQuery,
+  deleteGastosQuery,
+  recalcularMontoGastos,
+} from "../models/gastosQueries.js";
 import { v4 as uuidv4 } from "uuid";
 
 export const addGasto = async (req, res) => {
@@ -7,6 +13,7 @@ export const addGasto = async (req, res) => {
     const { roommate, descripcion, monto } = req.body;
     const newGasto = { id, roommate, descripcion, monto };
     const results = await addGastosQuery(newGasto);
+    recalcularMontoGastos()
     res.status(201).json(results);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -24,11 +31,11 @@ export const getGastos = async (req, res) => {
 
 export const updateGasto = async (req, res) => {
   try {
-    const {id } = req.query
+    const { id } = req.query;
     const { roommate, descripcion, monto } = req.body;
-    const newGasto = {id, roommate, descripcion, monto };
+    const newGasto = { id, roommate, descripcion, monto };
     const results = await updateGastosQuery(newGasto);
-   
+recalcularMontoGastos()
     res.status(200).json(results);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -39,6 +46,7 @@ export const deleteGasto = async (req, res) => {
   try {
     const { id } = req.query;
     const results = await deleteGastosQuery(id);
+    recalcularMontoGastos()
     res.status(200).json(results);
   } catch (error) {
     res.status(500).json({ error: error.message });
